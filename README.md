@@ -18,7 +18,7 @@ This project is focused on developing a simple yet functional desktop weather ap
 ## Usage
 To use the weather app
 1. Register at [OpenWeatherMap](https://openweathermap.org/) to get your unique API key.
-2. create api_key.js and insert the API key in the ./Weather_app/weather_app/secret/api_key.js like this:
+2. Insert the API key in the ./Weather_app/weather_app/secret/api_key.js like this:
 ```
    .pragma library
 
