@@ -11,7 +11,7 @@ Window {
     title: qsTr("Bjorgeh's WeatherStation")
 
     //Sets bool value for darkmode - change this to change between darkmode and lightmode
-    property bool app_dark_mode: true
+    property bool app_dark_mode: false
 
     //Color property
     property string black: "black"
@@ -23,6 +23,7 @@ Window {
         anchors.fill: parent
         color: root.app_dark_mode ? root.black : root.blue
 
+        //Variabel for signal to update weather
         property int updateWeather: 0
 
         //Top_View properties
@@ -52,6 +53,7 @@ Window {
         property string bottom_view_right_text_top: ""
 
 
+        //Signal for updating weather
         onUpdateWeatherChanged: {
 
             //Sets data in top_view
@@ -94,6 +96,7 @@ Window {
 
         //Middle circle
         Search_Circle{
+            id: search_circle
             anchors.centerIn: parent
             width: parent.width * 0.4
             height: parent.height * 0.4
