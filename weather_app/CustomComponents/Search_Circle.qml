@@ -27,7 +27,7 @@ Item {
             anchors.centerIn: parent
         }
 
-        //Takes cirty input from user
+        //Takes city input from user
         TextField{
             id: input
             anchors.centerIn: parent
@@ -57,11 +57,11 @@ Item {
                 main_rectangle.top_view_left_image = "https://openweathermap.org/img/wn/"+ short_forecast[0][3] +"@2x.png"
                 main_rectangle.top_view_left_text_top = short_forecast[0][2]
 
-                main_rectangle.top_view_middle_text =short_forecast[1][2] + "\n"+ short_forecast[1][0] + "\nFeels like: " +short_forecast[1][1]
+                main_rectangle.top_view_middle_text = short_forecast[1][0] + "\nFeels like: " +short_forecast[1][1]
                 main_rectangle.top_view_middle_image = "https://openweathermap.org/img/wn/"+ short_forecast[1][3] +"@2x.png"
                 main_rectangle.top_view_middle_text_top = short_forecast[1][2]
 
-                main_rectangle.top_view_right_text =short_forecast[2][2] + "\n"+ short_forecast[2][0] + "\nFeels like: " +short_forecast[2][1]
+                main_rectangle.top_view_right_text = short_forecast[2][0] + "\nFeels like: " +short_forecast[2][1]
                 main_rectangle.top_view_right_image = "https://openweathermap.org/img/wn/"+ short_forecast[2][3] +"@2x.png"
                 main_rectangle.top_view_right_text_top = short_forecast[2][2]
 
@@ -75,6 +75,7 @@ Item {
                     [-5.569999999999993,-8.409999999999968,2023-11-19 12:00:00,04d]
                 */
 
+                //sets three day forecast
                 main_rectangle.bottom_view_left_text = long_forecast[0][0] + "\nFeels like: " + long_forecast[0][1]
                 main_rectangle.bottom_view_left_text_top = long_forecast[0][2]
                 main_rectangle.bottom_view_left_image =  "https://openweathermap.org/img/wn/"+long_forecast[0][3]+"@2x.png"
@@ -86,6 +87,7 @@ Item {
                 main_rectangle.bottom_view_right_text = long_forecast[2][0] + "\nFeels like: " + long_forecast[2][1]
                 main_rectangle.bottom_view_right_text_top = long_forecast[2][2]
                 main_rectangle.bottom_view_right_image =  "https://openweathermap.org/img/wn/"+long_forecast[2][3]+"@2x.png"
+
 
                 //Sets current weather .. Working, but no custom component for this yet.
                 /*
