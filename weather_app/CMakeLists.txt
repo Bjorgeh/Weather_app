@@ -15,9 +15,14 @@ qt_add_executable(appweather_app
 qt_add_qml_module(appweather_app
     URI weather_app
     VERSION 1.0
-    QML_FILES Main.qml
-    QML_FILES secret/api_key.js
-    QML_FILES js/API_Calls/weather_from_city.js
+    QML_FILES
+        Main.qml
+        Secret/Api_key.js
+        JS/API_Calls/Weather_from_city.js
+        CustomComponents/Search_Circle.qml
+        CustomComponents/Bar_view.qml
+        CustomComponents/Weather_info.qml
+
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
