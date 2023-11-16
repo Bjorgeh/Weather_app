@@ -1,10 +1,15 @@
 .pragma library
 
-//Gets the weather from API by city name
-function get_weather(CityName, api_key) {
-    const api_link = "https://api.openweathermap.org/data/2.5/weather?q=" + encodeURIComponent(CityName) + "&appid=" + api_key;
+//Takes kelvin and returns celcius
+function kelvinToCelsius(kelvin) {
+    return kelvin - 273.15;
+}
 
-    //Makes API Request
+//Gets the weather from API by city name
+function get_current_weather(CityName, api_key) {
+
+    //Makes API GEt request
+    const api_link = "https://api.openweathermap.org/data/2.5/weather?q=" + encodeURIComponent(CityName) + "&appid=" + api_key;
     var request = new XMLHttpRequest();
     request.open("GET", api_link, false);
     request.send();
@@ -12,23 +17,72 @@ function get_weather(CityName, api_key) {
     //Sets respons as variable
     var response = JSON.parse(request.responseText);
 
-    //Changes the temps from kelvin to celcius
-    if (response && response.main) {
-        response.main.temp = kelvinToCelsius(response.main.temp);
-        response.main.feels_like = kelvinToCelsius(response.main.feels_like);
-        response.main.temp_min = kelvinToCelsius(response.main.temp_min);
-        response.main.temp_max = kelvinToCelsius(response.main.temp_max);
-    }
-
     //Prints respons nore readable
-    console.log(JSON.stringify(response, null, 2));
-    return response;
+    //console.log(JSON.stringify(response, null, 2));
+
+    //returns the temps and icons as a list
+    return [kelvinToCelsius(response.main.temp),
+            kelvinToCelsius(response.main.feels_like),
+            response.weather[0].icon,
+            response.main.dtd_txt]
 }
 
-//Takes kelvin and returns celcius
-function kelvinToCelsius(kelvin) {
-    return kelvin - 273.15;
+//gets the weather and returns the next 3 hours
+function get_three_hour_forecast(CityName, APIkey) {
+
+    //Makes API GEt request
+    const api_link = "https://api.openweathermap.org/data/2.5/forecast?q="+CityName+"&appid="+APIkey;
+    var request = new XMLHttpRequest();
+    request.open("GET", api_link, false);
+    request.send();
+
+    //Sets respons as variable
+    var response = JSON.parse(request.responseText);
+
+    //console.log(JSON.stringify(response, null, 2));
+    //console.log(response.list[0].main.temp);
+
+    //returns the temps and icons to the list
+    return [[kelvinToCelsius(response.list[1].main.temp),
+                          kelvinToCelsius(response.list[1].main.feels_like),
+                          response.list[1].dt_txt,
+                          response.list[1].weather[0].icon],
+                          [kelvinToCelsius(response.list[2].main.temp),
+                           kelvinToCelsius(response.list[2].main.feels_like),
+                           response.list[2].dt_txt,
+                           response.list[2].weather[0].icon],
+                          [kelvinToCelsius(response.list[3].main.temp),
+                           kelvinToCelsius(response.list[3].main.feels_like),
+                           response.list[3].dt_txt,
+                           response.list[3].dt_txt]]
 }
 
+//gets and returns forcast for three days
+function get_three_days_forecast(CityName, APIkey){
 
+    //Makes API GEt request
+    const api_link = "https://api.openweathermap.org/data/2.5/forecast?q="+CityName+"&appid="+APIkey;
+    var request = new XMLHttpRequest();
+    request.open("GET", api_link, false);
+    request.send();
+
+    //Sets respons as variable
+    var response = JSON.parse(request.responseText);
+
+    //console.log(JSON.stringify(response, null, 2));
+    //console.log(response.list[13].dt_txt)
+
+    return[[kelvinToCelsius(response.list[11].main.temp),
+           kelvinToCelsius(response.list[11].main.feels_like),
+           response.list[11].dt_txt,
+           response.list[11].weather[0].icon],
+            [kelvinToCelsius(response.list[26].main.temp),
+            kelvinToCelsius(response.list[26].main.feels_like),
+            response.list[19].dt_txt,
+            response.list[19].weather[0].icon],
+            [kelvinToCelsius(response.list[39].main.temp),
+            kelvinToCelsius(response.list[39].main.feels_like),
+            response.list[27].dt_txt,
+            response.list[27].weather[0].icon]]
+}
 

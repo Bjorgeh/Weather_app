@@ -1,56 +1,115 @@
 import QtQuick
 import QtQuick.Window
-import QtQuick.Controls
-import QtQuick.Controls.Material
-import "js/API_Calls/weather_from_city.js" as WeatherService
-import "secret/api_key.js" as APIKey
+import "./CustomComponents"
 
 //Weather App
 Window {
-    width: 800
-    height: 600
+    id: root
+    width: 900
+    height: 900
     visible: true
     title: qsTr("Bjorgeh's WeatherStation")
 
+    //Sets bool value for darkmode
+    property bool app_dark_mode: true
+
+    //Color property
+    property string black: "black"
+    property string blue: "#5651ff"
+
+    //Main rectangle for background and main layout
     Rectangle{
-        id: background
+        id: main_rectangle
         anchors.fill: parent
-        color: "black"
+        color: root.app_dark_mode ? root.black : root.blue
 
-        Rectangle {
-            id: circle
+        property int updateWeather: 0
+
+        //Top_View properties
+        property string top_view_left_image: ""
+        property string top_view_middle_image: ""
+        property string top_view_right_image: ""
+
+        property string top_view_left_text: ""
+        property string top_view_middle_text: ""
+        property string top_view_right_text: ""
+
+        property string top_view_left_text_top: ""
+        property string top_view_middle_text_top: ""
+        property string top_view_right_text_top: ""
+
+        //Bottom_View properties
+        property string bottom_view_left_image: ""
+        property string bottom_view_middle_image: ""
+        property string bottom_view_right_image: ""
+
+        property string bottom_view_left_text: ""
+        property string bottom_view_middle_text: ""
+        property string bottom_view_right_text: ""
+
+        property string bottom_view_left_text_top: ""
+        property string bottom_view_middle_text_top: ""
+        property string bottom_view_right_text_top: ""
+
+
+        onUpdateWeatherChanged: {
+
+            //Sets data in top_view
+            top_view.left_text = top_view_left_text
+            top_view.left_Image = top_view_left_image
+            top_view.left_text_top = top_view_left_text_top
+
+            top_view.middle_text = top_view_middle_text
+            top_view.middle_Image = top_view_middle_image
+            top_view.middle_text_top = top_view_middle_text_top
+
+            top_view.right_text = top_view_right_text
+            top_view.right_Image = top_view_right_image
+            top_view.right_text_top = top_view_right_text_top
+
+            //Sets data in bottom_view
+
+            bottom_view.left_text = bottom_view_left_text
+            bottom_view.left_Image = bottom_view_left_image
+            bottom_view.left_text_top = bottom_view_left_text_top
+
+            bottom_view.middle_text = bottom_view_middle_text
+            bottom_view.middle_Image = bottom_view_middle_image
+            bottom_view.middle_text_top = bottom_view_middle_text_top
+
+            bottom_view.right_text = bottom_view_right_text
+            bottom_view.right_Image = bottom_view_right_image
+            bottom_view.right_text_top = bottom_view_right_text_top
+
+        }
+
+        //Top bar
+        Bar_view{
+            id: top_view
+            dark_mode: root.app_dark_mode
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+        }
+
+        //Middle circle
+        Search_Circle{
             anchors.centerIn: parent
-            width: 300
-            height: 300
-            radius: height / 2
-            color: "gray"
+            width: parent.width * 0.4
+            height: parent.height * 0.4
+            dark_mode: root.app_dark_mode
+        }
 
-            //Gets picture of the moon
-            Image {
-                id: moon
-                source: "https://i.pinimg.com/originals/fa/86/97/fa869743d08ca95414a50cc0ec1526bd.png"
-                width: 450
-                height: 450
-                anchors.centerIn: parent
-            }
-
-            //Takes cirty input from user
-            TextField{
-                id: input
-                anchors.centerIn: parent
-                placeholderText: "City"
-                font.pixelSize: 20
-                font.bold: true
-                placeholderTextColor: "white"
-
-                //Takes an Enter press to accept input
-                onAccepted: {
-                    console.log(input.text)
-                    WeatherService.get_weather(input.text,APIKey.get_api_key())
-
-                }
-            }
+        //bottom bar
+        Bar_view{
+            id: bottom_view
+            dark_mode: root.app_dark_mode
+            anchor_top: false
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
         }
     }
 }
+
 
