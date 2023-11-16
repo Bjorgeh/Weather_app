@@ -22,6 +22,7 @@ qt_add_qml_module(appweather_app
         CustomComponents/Search_Circle.qml
         CustomComponents/Bar_view.qml
         CustomComponents/Weather_info.qml
+        CustomComponents/DarkMode_button.qml
 
 )
 

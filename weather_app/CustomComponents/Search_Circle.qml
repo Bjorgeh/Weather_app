@@ -25,26 +25,28 @@ Item {
             width: parent.width +150
             height: parent.height +150
             anchors.centerIn: parent
-        }
 
-        //Takes city input from user
-        TextField{
-            id: input
-            anchors.centerIn: parent
-            placeholderText: "City"
-            font.pixelSize: 20
-            font.bold: true
-            placeholderTextColor: "white"
+            Column{
+                anchors.centerIn: parent
 
-            //Takes an Enter press to accept input
-            onAccepted: {
-                console.log(input.text)
-                input.placeholderText = input.text
+                //Takes city input from user
+                TextField{
+                    id: input
+                    anchors.centerIn: parent
+                    placeholderText: "City"
+                    font.pixelSize: 20
+                    font.bold: true
+                    placeholderTextColor: "white"
 
-                //gets 3 hour forecast
-                let short_forecast = Weatherdata.get_three_hour_forecast(input.text, APIKey.get_api_key())
+                    //Takes an Enter press to accept input
+                    onAccepted: {
+                        console.log(input.text)
+                        input.placeholderText = input.text
 
-                /*
+                        //gets 3 hour forecast
+                        let short_forecast = Weatherdata.get_three_hour_forecast(input.text, APIKey.get_api_key())
+
+                        /*
                     Example from short_forecast function:
                     Actual temp, feels like, date and time, icon
                     [[-5.5499999999999545,-8.889999999999986,2023-11-16 03:00:00,03n],
@@ -52,45 +54,45 @@ Item {
                     [-8.299999999999955,-12.089999999999975,2023-11-16 09:00:00,02d]]
                 */
 
-                //Sets three hour forecast
-                main_rectangle.top_view_left_text = short_forecast[0][0] + "\nFeels like: " +short_forecast[0][1]
-                main_rectangle.top_view_left_image = "https://openweathermap.org/img/wn/"+ short_forecast[0][3] +"@2x.png"
-                main_rectangle.top_view_left_text_top = short_forecast[0][2]
+                        //Sets three hour forecast
+                        main_rectangle.top_view_left_text = short_forecast[0][0] + "\nFeels like: " +short_forecast[0][1]
+                        main_rectangle.top_view_left_image = "https://openweathermap.org/img/wn/"+ short_forecast[0][3] +"@2x.png"
+                        main_rectangle.top_view_left_text_top = short_forecast[0][2]
 
-                main_rectangle.top_view_middle_text = short_forecast[1][0] + "\nFeels like: " +short_forecast[1][1]
-                main_rectangle.top_view_middle_image = "https://openweathermap.org/img/wn/"+ short_forecast[1][3] +"@2x.png"
-                main_rectangle.top_view_middle_text_top = short_forecast[1][2]
+                        main_rectangle.top_view_middle_text = short_forecast[1][0] + "\nFeels like: " +short_forecast[1][1]
+                        main_rectangle.top_view_middle_image = "https://openweathermap.org/img/wn/"+ short_forecast[1][3] +"@2x.png"
+                        main_rectangle.top_view_middle_text_top = short_forecast[1][2]
 
-                main_rectangle.top_view_right_text = short_forecast[2][0] + "\nFeels like: " +short_forecast[2][1]
-                main_rectangle.top_view_right_image = "https://openweathermap.org/img/wn/"+ short_forecast[2][3] +"@2x.png"
-                main_rectangle.top_view_right_text_top = short_forecast[2][2]
+                        main_rectangle.top_view_right_text = short_forecast[2][0] + "\nFeels like: " +short_forecast[2][1]
+                        main_rectangle.top_view_right_image = "https://openweathermap.org/img/wn/"+ short_forecast[2][3] +"@2x.png"
+                        main_rectangle.top_view_right_text_top = short_forecast[2][2]
 
 
-                //gets three day forecast
-                let long_forecast = Weatherdata.get_three_days_forecast(input.text, APIKey.get_api_key())
-                /*
+                        //gets three day forecast
+                        let long_forecast = Weatherdata.get_three_days_forecast(input.text, APIKey.get_api_key())
+                        /*
                     Example from three_days_forecast function:
                     [-4.659999999999968,-4.659999999999968,2023-11-17 12:00:00,03d]
                     [-3.0600000000000023,-6.099999999999966,2023-11-18 12:00:00,02d]
                     [-5.569999999999993,-8.409999999999968,2023-11-19 12:00:00,04d]
                 */
 
-                //sets three day forecast
-                main_rectangle.bottom_view_left_text = long_forecast[0][0] + "\nFeels like: " + long_forecast[0][1]
-                main_rectangle.bottom_view_left_text_top = long_forecast[0][2]
-                main_rectangle.bottom_view_left_image =  "https://openweathermap.org/img/wn/"+long_forecast[0][3]+"@2x.png"
+                        //sets three day forecast
+                        main_rectangle.bottom_view_left_text = long_forecast[0][0] + "\nFeels like: " + long_forecast[0][1]
+                        main_rectangle.bottom_view_left_text_top = long_forecast[0][2]
+                        main_rectangle.bottom_view_left_image =  "https://openweathermap.org/img/wn/"+long_forecast[0][3]+"@2x.png"
 
-                main_rectangle.bottom_view_middle_text = long_forecast[1][0] + "\nFeels like: " + long_forecast[1][1]
-                main_rectangle.bottom_view_middle_text_top = long_forecast[1][2]
-                main_rectangle.bottom_view_middle_image =  "https://openweathermap.org/img/wn/"+long_forecast[1][3]+"@2x.png"
+                        main_rectangle.bottom_view_middle_text = long_forecast[1][0] + "\nFeels like: " + long_forecast[1][1]
+                        main_rectangle.bottom_view_middle_text_top = long_forecast[1][2]
+                        main_rectangle.bottom_view_middle_image =  "https://openweathermap.org/img/wn/"+long_forecast[1][3]+"@2x.png"
 
-                main_rectangle.bottom_view_right_text = long_forecast[2][0] + "\nFeels like: " + long_forecast[2][1]
-                main_rectangle.bottom_view_right_text_top = long_forecast[2][2]
-                main_rectangle.bottom_view_right_image =  "https://openweathermap.org/img/wn/"+long_forecast[2][3]+"@2x.png"
+                        main_rectangle.bottom_view_right_text = long_forecast[2][0] + "\nFeels like: " + long_forecast[2][1]
+                        main_rectangle.bottom_view_right_text_top = long_forecast[2][2]
+                        main_rectangle.bottom_view_right_image =  "https://openweathermap.org/img/wn/"+long_forecast[2][3]+"@2x.png"
 
 
-                //Sets current weather .. Working, but no custom component for this yet.
-                /*
+                        //Sets current weather .. Working, but no custom component for this yet.
+                        /*
 
                 let weather = Weatherdata.get_current_weather(input.text,APIKey.get_api_key())
 
@@ -103,8 +105,19 @@ Item {
 
                 */
 
-                //This triggers signal to update weather in main_rectangle
-                main_rectangle.updateWeather++;
+                        //This triggers signal to update weather in main_rectangle
+                        main_rectangle.updateWeather++;
+                    }
+
+                    DarkMode_button{
+                        id: dark_mode_button
+                        anchors.top: input.bottom
+                        button_width: input.width
+                        button_height: input.height
+                        anchors.topMargin: 5
+
+                    }
+                }
             }
         }
     }
