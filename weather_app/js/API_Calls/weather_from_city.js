@@ -54,7 +54,7 @@ function get_three_hour_forecast(CityName, APIkey) {
                           [kelvinToCelsius(response.list[3].main.temp),
                            kelvinToCelsius(response.list[3].main.feels_like),
                            response.list[3].dt_txt,
-                           response.list[3].dt_txt]]
+                           response.list[3].weather[0].icon]]
 }
 
 //gets and returns forcast for three days

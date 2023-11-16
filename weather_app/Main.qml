@@ -10,7 +10,7 @@ Window {
     visible: true
     title: qsTr("Bjorgeh's WeatherStation")
 
-    //Sets bool value for darkmode
+    //Sets bool value for darkmode - change this to change between darkmode and lightmode
     property bool app_dark_mode: true
 
     //Color property
