@@ -26,6 +26,9 @@ Window {
         //Variabel for signal to update weather
         property int updateWeather: 0
 
+        property bool is_celsius: true
+        property string f_or_c: is_celsius ? " C" : " F"
+
         //Top_View properties
         property string top_view_left_image: ""
         property string top_view_middle_image: ""
