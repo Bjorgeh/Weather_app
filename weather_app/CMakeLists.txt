@@ -23,6 +23,9 @@ qt_add_qml_module(appweather_app
         CustomComponents/Bar_view.qml
         CustomComponents/Weather_info.qml
         CustomComponents/DarkMode_button.qml
+        JS/Show_results.js
+
+        SOURCES temp_convertion.h temp_convertion.cpp timestamp_convertion.h timestamp_convertion.cpp
 
 )
 

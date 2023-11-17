@@ -1,10 +1,5 @@
 .pragma library
 
-//Takes kelvin and returns celcius
-function kelvinToCelsius(kelvin) {
-    return kelvin - 273.15;
-}
-
 //Gets the weather from API by city name
 function get_current_weather(CityName, api_key) {
 
@@ -21,8 +16,8 @@ function get_current_weather(CityName, api_key) {
     //console.log(JSON.stringify(response, null, 2));
 
     //returns the temps and icons as a list
-    return [kelvinToCelsius(response.main.temp),
-            kelvinToCelsius(response.main.feels_like),
+    return [response.main.temp,
+            response.main.feels_like,
             response.weather[0].icon,
             response.main.dtd_txt]
 }
@@ -43,16 +38,16 @@ function get_three_hour_forecast(CityName, APIkey) {
     //console.log(response.list[0].main.temp);
 
     //returns the temps and icons to the list
-    return [[kelvinToCelsius(response.list[1].main.temp),
-                          kelvinToCelsius(response.list[1].main.feels_like),
+    return [[response.list[1].main.temp,
+                          response.list[1].main.feels_like,
                           response.list[1].dt_txt,
                           response.list[1].weather[0].icon],
-                          [kelvinToCelsius(response.list[2].main.temp),
-                           kelvinToCelsius(response.list[2].main.feels_like),
+                          [response.list[2].main.temp,
+                           response.list[2].main.feels_like,
                            response.list[2].dt_txt,
                            response.list[2].weather[0].icon],
-                          [kelvinToCelsius(response.list[3].main.temp),
-                           kelvinToCelsius(response.list[3].main.feels_like),
+                          [response.list[3].main.temp,
+                           response.list[3].main.feels_like,
                            response.list[3].dt_txt,
                            response.list[3].weather[0].icon]]
 }
@@ -72,16 +67,16 @@ function get_three_days_forecast(CityName, APIkey){
     //console.log(JSON.stringify(response, null, 2));
     //console.log(response.list[13].dt_txt)
 
-    return[[kelvinToCelsius(response.list[11].main.temp),
-           kelvinToCelsius(response.list[11].main.feels_like),
+    return[[response.list[11].main.temp,
+           response.list[11].main.feels_like,
            response.list[11].dt_txt,
            response.list[11].weather[0].icon],
-            [kelvinToCelsius(response.list[26].main.temp),
-            kelvinToCelsius(response.list[26].main.feels_like),
+            [response.list[26].main.temp,
+            response.list[26].main.feels_like,
             response.list[19].dt_txt,
             response.list[19].weather[0].icon],
-            [kelvinToCelsius(response.list[39].main.temp),
-            kelvinToCelsius(response.list[39].main.feels_like),
+            [response.list[39].main.temp,
+            response.list[39].main.feels_like,
             response.list[27].dt_txt,
             response.list[27].weather[0].icon]]
 }
