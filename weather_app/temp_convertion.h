@@ -1,6 +1,5 @@
 #ifndef TEMP_CONVERTION_H
 #define TEMP_CONVERTION_H
-
 #include <QObject>
 
 class Temp_Convertion : public QObject

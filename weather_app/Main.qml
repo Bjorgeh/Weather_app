@@ -1,6 +1,9 @@
 import QtQuick
 import QtQuick.Window
 import "./CustomComponents"
+import "JS/API_Calls/Weather_from_city.js" as Weatherdata
+import "JS/Show_results.js" as Results
+import "Secret/Api_key.js" as APIKey
 
 //Weather App
 Window {
@@ -55,6 +58,7 @@ Window {
         property string bottom_view_middle_text_top: ""
         property string bottom_view_right_text_top: ""
 
+        property string city_name: ""
 
         //Signal for updating weather
         onUpdateWeatherChanged: {
@@ -86,6 +90,35 @@ Window {
             bottom_view.right_Image = bottom_view_right_image
             bottom_view.right_text_top = bottom_view_right_text_top
 
+            //Sets data in current_weather - from C++ object
+            current_info.imageLink = current_weather.getIcon()
+            current_info.text_top = current_weather.getCityName() + " now:\n" + current_weather.getTimeStamp()
+
+            //sets variables for better readability
+            let current_temp = is_celsius ? convertion.kelvin_to_celsius(current_weather.getTemperature()) : convertion.kelvin_to_fahrenheit(current_weather.getTemperature())
+            let feels_like = is_celsius ? convertion.kelvin_to_celsius(current_weather.getTemperatureFeelsLike()) : convertion.kelvin_to_fahrenheit(current_weather.getTemperatureFeelsLike())
+
+            current_info.text_bottom =
+                    "Actual: "+ current_temp.toString()
+                    + main_rectangle.f_or_c + "\n"
+                    + current_weather.getWeatherDescription()
+                    + "\n"
+                    +"Feels like: "+ feels_like.toString() + main_rectangle.f_or_c
+        }
+
+        //Signal for updating weather and unit
+        onIs_celsiusChanged: {
+
+            main_rectangle.f_or_c = is_celsius ? " C" : " F"
+
+            //gets 3 hour forecast
+            let short_forecast = Weatherdata.get_three_hour_forecast(city_name, APIKey.get_api_key())
+            //gets three day forecast
+            let long_forecast = Weatherdata.get_three_days_forecast(city_name, APIKey.get_api_key())
+
+            //sets the weather data
+            Results.set_short_data(short_forecast)
+            Results.set_long_data(long_forecast)
         }
 
         //Top bar
@@ -95,6 +128,18 @@ Window {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
+        }
+
+        //Current weather
+        Weather_info{
+            id: current_info
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            width: parent.width/3
+            height: parent.height/3
+            dark_mode: root.app_dark_mode
+            bkg_color: root.app_dark_mode ? root.black : root.blue
+            text_color: root.app_dark_mode ? root.blue : root.black
         }
 
         //Middle circle
