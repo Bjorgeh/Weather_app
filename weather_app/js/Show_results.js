@@ -6,7 +6,6 @@ function set_short_data(data_short_forecast) {
         Example from short_forecast function:
         Actual temp, feels like, date and time, icon
         [[-5.5499999999999545,-8.889999999999986,2023-11-16 03:00:00,03n]
-
     */
 
     //converts with C++ function: temperature and feels like to correct units when is_celesius is true or false

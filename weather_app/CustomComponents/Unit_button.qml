@@ -2,7 +2,6 @@ import QtQuick 2.15
 
 //Dark mode button
 Item {
-    property bool darkMode: false
 
     property int button_width: 50
     property int button_height: 50
@@ -23,12 +22,6 @@ Item {
             width: parent.width
             height: parent.height
 
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr(button_text)
-                color: darkMode ? buttonImage_source_light : buttonImage_source_dark
-            }
-
             Image{
                 id: buttonImage
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -42,8 +35,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                //Changes to darkMode
-                 root.app_dark_mode = !root.app_dark_mode
+                //Changes units to F or C
+                main_rectangle.is_celsius = !main_rectangle.is_celsius
 
             }
         }
