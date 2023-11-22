@@ -3,7 +3,7 @@
 ## About the Project
 This project is focused on developing a simple yet functional desktop weather application using Qt Quick QML, C++, and JavaScript. The application aims to provide an intuitive and user-friendly interface that displays real-time weather updates and forecasts for selected cities.
 
-## Requirements
+## Requirements:
 1. Qt Creator 10.0.3 or newer 
 2. Qt Desktop 6.6.0 MINGW 64 
 3. Qt WebAssembly 6.6.0 Multi Threaded (This is under testing)
