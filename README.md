@@ -8,7 +8,7 @@ This project is focused on developing a simple yet functional desktop weather ap
 2. Qt Desktop 6.6.0 MINGW 64 
 3. Qt WebAssembly 6.6.0 Multi Threaded (This is under testing)
 
-## Features
+## Features:
 1. **City Selection**: Allows users to choose a city to view weather data, implemented as either a search field.
 2. **Current Weather Conditions Display**: Shows current weather conditions for the selected city, including temperature and weather type (sunny, rainy, cloudy, etc.).
 3. **Weather Icon**: Incorporates icons representing the current weather conditions.
