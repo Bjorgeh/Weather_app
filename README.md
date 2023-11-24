@@ -19,7 +19,7 @@ This project is focused on developing a simple yet functional desktop weather ap
 8. **Manual Update Function**: Feature to manually update weather data.
 9. **Dark Mode**: An option for users to switch between dark/light mode.
 
-## Usage
+## Usage:
 How to use the weather app
 1. Register at [OpenWeatherMap](https://openweathermap.org/) to get your unique API key.
 2. Insert the API key in the ./Weather_app/weather_app/secret/api_key.js like this:
