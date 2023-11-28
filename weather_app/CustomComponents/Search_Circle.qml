@@ -15,8 +15,8 @@ Item {
     property string source_light:"https://cdn-icons-png.flaticon.com/512/5115/5115625.png"
     property string source_dark: "https://cdn-icons-png.flaticon.com/512/5261/5261864.png"
 
-    property string cImage: "https://png2.cleanpng.com/sh/fe1625c150c91df1205f0495789c6e83/L0KzQYm3VsMxN6d0kJH0aYP2gLBuTfNmdKRujeU2Y3BwgMb7hgIucZR0huU2aHXkfMXvTfxwb5CyTdQ8OEDodoi9VMkybGIzT6M6OUa1SIO4VcMxPGE1TaI8NEG1PsH1h5==/kisspng-celsius-computer-icons-health-logo-5b380ef76491d1.711962821530400503412.png"
-    property string fImage: "https://cdn-icons-png.flaticon.com/512/16/16090.png"
+    property string cImage: "https://cdn3.iconfinder.com/data/icons/meteocons/512/celsius-512.png"
+    property string fImage: "https://cdn-icons-png.flaticon.com/512/6869/6869054.png"
 
     Rectangle {
         id: circle
