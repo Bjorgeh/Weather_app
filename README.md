@@ -15,7 +15,7 @@ This project is focused on developing a simple yet functional desktop weather ap
 4. **Long-Term Forecast**: Features a simple long-term 3-day forecast, with date, temperatures and weather icons.
 5. **Interactive User Interface**: Designed to be intuitive and easy to navigate.
 6. **Error Handling**: Basic error handling for situations like network errors or incorrect city names.
-7. **Temperature Unit Choice**: Allows users to choose between Celsius and Fahrenheit.
+7. **Temperature Unit Choice**: ~Allows users to choose between Celsius and Fahrenheit.~
 8. **Manual Update Function**: Feature to manually update weather data.
 9. **Dark Mode**: An option for users to switch between dark/light mode.
 
